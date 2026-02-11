@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metals — Gold & Silver Rates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Metals</h1>
+      <p class="subtitle">Live gold & silver rates · USD per kg</p>
+    </header>
+
+    <main class="rates">
+      <section class="section">
+        <h2>Global (LBMA)</h2>
+        <div class="cards">
+          <article class="card card--gold">
+            <span class="card__label">Gold</span>
+            <span class="card__value" id="gold">—</span>
+            <span class="card__unit">USD/kg</span>
+          </article>
+          <article class="card card--silver">
+            <span class="card__label">Silver</span>
+            <span class="card__value" id="silver">—</span>
+            <span class="card__unit">USD/kg</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>India (MCX)</h2>
+        <div class="cards">
+          <article class="card card--mcx-gold">
+            <span class="card__label">MCX Gold</span>
+            <span class="card__value" id="mcx-gold">—</span>
+            <span class="card__unit">USD/kg</span>
+          </article>
+          <article class="card card--mcx-silver">
+            <span class="card__label">MCX Silver</span>
+            <span class="card__value" id="mcx-silver">—</span>
+            <span class="card__unit">USD/kg</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--inr">
+        <h2>Conversion</h2>
+        <article class="card card--inr">
+          <span class="card__label">1 USD =</span>
+          <span class="card__value" id="usd-inr">—</span>
+          <span class="card__unit">INR</span>
+        </article>
+      </section>
+
+      <div class="meta">
+        <span class="meta__time" id="updated">Last updated: —</span>
+      </div>
+
+      <button type="button" class="btn" id="refresh" aria-label="Refresh rates">
+        <span class="btn__text">Refresh</span>
+        <span class="btn__icon" aria-hidden="true">↻</span>
+      </button>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

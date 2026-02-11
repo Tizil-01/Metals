@@ -1,0 +1,245 @@
+:root {
+  --bg: #0d0d0d;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #f5f5f5;
+  --text-muted: #888;
+  --gold: #d4a853;
+  --gold-dim: #b8923f;
+  --silver: #c0c0c0;
+  --silver-dim: #9a9a9a;
+  --accent: #3b82f6;
+  --success: #22c55e;
+  --error: #ef4444;
+  --radius: 12px;
+  --font: "DM Sans", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.rates {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card--gold {
+  border-color: rgba(212, 168, 83, 0.35);
+  background: linear-gradient(145deg, rgba(212, 168, 83, 0.08) 0%, var(--surface) 100%);
+}
+
+.card--silver {
+  border-color: rgba(192, 192, 192, 0.3);
+  background: linear-gradient(145deg, rgba(192, 192, 192, 0.06) 0%, var(--surface) 100%);
+}
+
+.card--mcx-gold {
+  border-color: rgba(212, 168, 83, 0.25);
+}
+
+.card--mcx-silver {
+  border-color: rgba(192, 192, 192, 0.2);
+}
+
+.card--inr {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.06) 0%, var(--surface) 100%);
+}
+
+.card__label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.card__value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.card--gold .card__value,
+.card--mcx-gold .card__value {
+  color: var(--gold);
+}
+
+.card--silver .card__value,
+.card--mcx-silver .card__value {
+  color: var(--silver);
+}
+
+.card--inr .card__value {
+  color: var(--accent);
+}
+
+.card__unit {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.section--inr .cards {
+  grid-template-columns: 1fr;
+}
+
+.section--inr .card {
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+
+.section--inr .card__value {
+  font-size: 1.5rem;
+}
+
+.meta {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.meta__time {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.25rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--text);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #e0e0e0;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn__icon {
+  font-size: 1.2rem;
+  transition: transform 0.4s;
+}
+
+.btn.loading .btn__icon {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.25s, opacity 0.25s, visibility 0.25s;
+  z-index: 100;
+}
+
+.toast.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.toast.error {
+  border-color: var(--error);
+  color: #fca5a5;
+}
+
+.toast.success {
+  border-color: var(--success);
+  color: #86efac;
+}
